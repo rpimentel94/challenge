@@ -44,6 +44,10 @@ class UrlController extends Controller
 
     public function getURL(Request $request, $id) {
         $url = DB::table('urls')->find($id);
+        if (empty($url)) {
+            echo "This URL does not Exist";
+            die();
+        }
         return redirect($url->url);
     }
 }
